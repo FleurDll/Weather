@@ -430,6 +430,7 @@ function modalLanguage(errors) {
         $(".modal-close-button").click(function () {
             $(".loading").addClass("hidden");
         });
+        $("#inputCity").focus();
     } else {
         $(".modal-title").text("Geolocation failure");
         $(".modal-body").text("Only city search is available. (" + errors.message + ").");
@@ -437,6 +438,7 @@ function modalLanguage(errors) {
         $(".modal-close-button").click(function () {
             $(".loading").addClass("hidden");
         });
+        $("#inputCity").focus();
     }
 }
 
