@@ -165,8 +165,7 @@ function successLocationUser(pos) {
     })
         .fail(function () {
             $('#myModal').modal('show');
-            $("#inputCity").prop("autofocus", true);
-            $("#inputCity").focus();
+            modalLanguage();
         })
 
     // Get Forecast Weather
@@ -174,43 +173,22 @@ function successLocationUser(pos) {
     })
         .fail(function () {
             $('#myModal').modal('show');
-            $("#inputCity").prop("autofocus", true);
-            $("#inputCity").focus();
+            modalLanguage();
         })
 }
 
 function errorLocationUser(err) {
     console.warn("ERREUR" + err.code + " " + err.message);
     $('#myModal').modal('show');
-    $("#inputCity").prop("autofocus", true);
-    $("#inputCity").focus();
-    $(".loading").addClass("hidden");
+    modalLanguage();
 
-    if (userLang === "fr-FR") {
-        $(".modal-title").text("Echec de la géolocalisation");
-        $(".modal-body").text("Seule la recherche par ville est disponible. (" + err.message + ").");
-    } else {
-        $(".modal-title").text("Geolocation failure");
-        $(".modal-body").text("Only city search is available. (" + err.message + ").");
-        $(".modal-close-button").text("Close");
-    }
 }
 
 if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(successLocationUser, errorLocationUser, optionsLocation);
 } else {
     $('#myModal').modal('show');
-    if ($(".body-index").hasClass("FR")) {
-        $(".modal-title").text("Echec de la géolocalisation");
-        $(".modal-body").text("Seule la recherche par ville est disponible.");
-        $("#inputCity").prop("autofocus", true);
-        $("#inputCity").focus();
-    } else {
-        $(".modal-title").text("Geolocation failure");
-        $(".modal-body").text("Only city search is available.");
-        $("#inputCity").prop("autofocus", true);
-        $("#inputCity").focus();
-    }
+    modalLanguage();
 }
 
 //////////////////////////////////////////////////////////////// Submit current weather
@@ -443,6 +421,25 @@ function getDynamicImage(todayIcon) {
         }
     }
 }
+
+// handle modal language
+function modalLanguage() {
+    if (userLang === "fr-FR") {
+        $(".modal-title").text("Echec de la géolocalisation");
+        $(".modal-body").text("Seule la recherche par ville est disponible. (" + err.message + ").");
+        $(".modal-close-button").click(function () {
+            $(".loading").addClass("hidden");
+        });
+    } else {
+        $(".modal-title").text("Geolocation failure");
+        $(".modal-body").text("Only city search is available. (" + err.message + ").");
+        $(".modal-close-button").text("Close");
+        $(".modal-close-button").click(function () {
+            $(".loading").addClass("hidden");
+        });
+    }
+}
+
 //////////////////////////////////// Full-Screen mode
 function getFullscreenElement() {
     return document.fullscreenElement
