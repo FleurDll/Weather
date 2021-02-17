@@ -152,7 +152,7 @@ const optionsLocation = {
     maximumAge: 0
 };
 
-function success(pos) {
+function successLocationUser(pos) {
     $(".loading").removeClass("hidden");
     const latitude = pos.coords.latitude;
     const longitude = pos.coords.longitude;
@@ -165,6 +165,8 @@ function success(pos) {
     })
         .fail(function () {
             $('#myModal').modal('show');
+            $("#inputCity").prop("autofocus", true);
+            $("#inputCity").focus();
         })
 
     // Get Forecast Weather
@@ -172,16 +174,19 @@ function success(pos) {
     })
         .fail(function () {
             $('#myModal').modal('show');
+            $("#inputCity").prop("autofocus", true);
+            $("#inputCity").focus();
         })
 }
 
-function error(err) {
+function errorLocationUser(err) {
     console.warn("ERREUR" + err.code + " " + err.message);
-
     $('#myModal').modal('show');
+    $("#inputCity").prop("autofocus", true);
+    $("#inputCity").focus();
     $(".loading").addClass("hidden");
 
-    if ($(".body-index").hasClass("FR")) {
+    if (userLang === "fr-FR") {
         $(".modal-title").text("Echec de la géolocalisation");
         $(".modal-body").text("Seule la recherche par ville est disponible. (" + err.message + ").");
     } else {
@@ -192,15 +197,19 @@ function error(err) {
 }
 
 if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(success, error, optionsLocation);
+    navigator.geolocation.getCurrentPosition(successLocationUser, errorLocationUser, optionsLocation);
 } else {
     $('#myModal').modal('show');
     if ($(".body-index").hasClass("FR")) {
         $(".modal-title").text("Echec de la géolocalisation");
-        $(".modal-body").text("La géolocalisation n'est pas supportée par ce browser.");
+        $(".modal-body").text("Seule la recherche par ville est disponible.");
+        $("#inputCity").prop("autofocus", true);
+        $("#inputCity").focus();
     } else {
         $(".modal-title").text("Geolocation failure");
-        $(".modal-body").text("Geolocation is not supported by this browser.");
+        $(".modal-body").text("Only city search is available.");
+        $("#inputCity").prop("autofocus", true);
+        $("#inputCity").focus();
     }
 }
 
