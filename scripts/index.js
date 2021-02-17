@@ -180,7 +180,7 @@ function successLocationUser(pos) {
 function errorLocationUser(err) {
     console.warn("ERREUR" + err.code + " " + err.message);
     $('#myModal').modal('show');
-    modalLanguage();
+    modalLanguage(err);
 
 }
 
@@ -423,16 +423,16 @@ function getDynamicImage(todayIcon) {
 }
 
 // handle modal language
-function modalLanguage() {
+function modalLanguage(errors) {
     if (userLang === "fr-FR") {
         $(".modal-title").text("Echec de la géolocalisation");
-        $(".modal-body").text("Seule la recherche par ville est disponible. (" + err.message + ").");
+        $(".modal-body").text("Seule la recherche par ville est disponible. (" + errors.message + ").");
         $(".modal-close-button").click(function () {
             $(".loading").addClass("hidden");
         });
     } else {
         $(".modal-title").text("Geolocation failure");
-        $(".modal-body").text("Only city search is available. (" + err.message + ").");
+        $(".modal-body").text("Only city search is available. (" + errors.message + ").");
         $(".modal-close-button").text("Close");
         $(".modal-close-button").click(function () {
             $(".loading").addClass("hidden");
