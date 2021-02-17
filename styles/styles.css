@@ -485,6 +485,8 @@ label {
     z-index: 50;
   }
   label {
+    display: flex;
+    flex-direction: row;
     z-index: 50;
     font-size: 15px;
   }

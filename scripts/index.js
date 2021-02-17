@@ -10,19 +10,20 @@ optionsGeoDate = {
 }
 
 if (userLang === "fr-FR") {
-    handleUserLanguage("FR", "fr-FR");
+    dateToUserLanguage("FR", "fr-FR");
     $("#users-language").text("fr / ");
     $("#other-language").text("en");
+    $("#inputCity").attr("placeholder", "Chercher une ville");
 } else {
-    handleUserLanguage("EN", "en-US");
+    dateToUserLanguage("EN", "en-US");
     $("#users-language").text("en / ");
     $("#other-language").text("fr");
+    $("#inputCity").attr("placeholder", "Find a city");
 }
 
-function handleUserLanguage(classLanguage, optionsLang) {
+function dateToUserLanguage(classLanguage, optionsLang) {
     $(".body-index").addClass(classLanguage);
     geolocationDate = new Date().toLocaleString(optionsLang, optionsGeoDate).toUpperCase();
-    $("#inputCity").attr("placeholder", "Chercher une ville");
     $(".date").text(geolocationDate);
 }
 
@@ -350,8 +351,7 @@ function handleForecastInfo(searchedUTC, usedData) {
     }
 }
 
-
-//////////////////////////////////// switch button Darkmode / Whitemode
+//////////////////////////////////// switch button Dark mode / White mode
 $(".toggle-state-darkmode").click(() => {
     const backgroundColor = $(".window").css("background-color");
     if (backgroundColor === "rgb(255, 255, 255)") {
