@@ -9,7 +9,15 @@ optionsGeoDate = {
     month: "long"
 }
 
-userLang === "fr-FR" ? handleUserLanguage("FR", "fr-FR") : handleUserLanguage("EN", "en-US");
+if (userLang === "fr-FR") {
+    handleUserLanguage("FR", "fr-FR");
+    $("#users-language").text("fr / ");
+    $("#other-language").text("en");
+} else {
+    handleUserLanguage("EN", "en-US");
+    $("#users-language").text("en / ");
+    $("#other-language").text("fr");
+}
 
 function handleUserLanguage(classLanguage, optionsLang) {
     $(".body-index").addClass(classLanguage);
@@ -392,7 +400,7 @@ function getDynamicImage(todayIcon) {
     const backgroundColor = $(".window").css("background-color");
     const windowSize = $(window).width();
 
-    if (windowSize > 730) {
+    if (windowSize > 515) {
         if (backgroundColor === "rgb(18, 18, 18)") {
             handleImageAndOverlay("dark-overlay");
         } else if (backgroundColor === "rgb(255, 255, 255)") {
