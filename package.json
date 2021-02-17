@@ -1,0 +1,18 @@
+{
+  "name": "weatherapp",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Fleur",
+  "license": "ISC",
+  "keywords": [],
+  "description": "",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "webpack": "^5.22.0"
+  }
+}
