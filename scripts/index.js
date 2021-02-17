@@ -27,6 +27,15 @@ function dateToUserLanguage(classLanguage, optionsLang) {
     $(".date").text(geolocationDate);
 }
 
+// error page language
+if (userLang === "fr-FR") {
+    $(".text-error").text("Tu as peut être entré le nom d'une ville non existante ?");
+    $(".btn-error").text("Réssayer");
+} else {
+    $(".text-error").text("You may have entered the name of a non-existent city?");
+    $(".btn-error").text("Try Again");
+}
+
 ///////////////////////////////////// change language
 $(".toggle-state-language").click(() => {
     if ($(".body-index").hasClass("FR")) {
@@ -88,12 +97,6 @@ function getNext4Days(offset) {
             $(".d" + i).text(weekday[indexFutur[i - 1]]);
         }
     }
-}
-
-// error page language
-if ($(".body-index").hasClass("EN")) {
-    $(".text-error").text("You may have entered the name of a non-existent city?");
-    $(".btn-error").text("Try Again");
 }
 
 //////////////////////////////////////////////////////////////// Location current weather
