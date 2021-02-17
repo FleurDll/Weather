@@ -256,14 +256,14 @@ $("form").submit(e => {
     $.get(urlCurrentCityName, successSubmitCurrent).done(function () {
     })
         .fail(function () {
-            window.location.replace("https://fleurdll.github.io/Weather/error");
+            window.location.replace("https://howstheweatherapp.herokuapp.com/error");
         })
 
     // Get forecast info
     $.get(urlForecastCityName, successSubmitForecast).done(function () {
     })
         .fail(function () {
-            window.location.replace("https://fleurdll.github.io/Weather/error");
+            window.location.replace("https://howstheweatherapp.herokuapp.com/error");
         })
     e.preventDefault();
 });
