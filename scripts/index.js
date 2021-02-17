@@ -429,16 +429,16 @@ function modalLanguage(errors) {
         $(".modal-body").text("Seule la recherche par ville est disponible. (" + errors.message + ").");
         $(".modal-close-button").click(function () {
             $(".loading").addClass("hidden");
+            $("#inputCity").focus();
         });
-        $("#inputCity").focus();
     } else {
         $(".modal-title").text("Geolocation failure");
         $(".modal-body").text("Only city search is available. (" + errors.message + ").");
         $(".modal-close-button").text("Close");
         $(".modal-close-button").click(function () {
             $(".loading").addClass("hidden");
+            $("#inputCity").focus();
         });
-        $("#inputCity").focus();
     }
 }
 
