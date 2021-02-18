@@ -29,7 +29,7 @@ db.once("open", () => {
 const citySchema = new mongoose.Schema({
     cityName: String
 }, {
-    timestamps: { createdAt: true, updatedAt: false }
+    timestamps: true
 });
 
 const City = mongoose.model("City", citySchema);
