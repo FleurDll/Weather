@@ -359,6 +359,7 @@ function darkMode() {
     $(".location, .temp").css("color", "#A8A8A8");
     $(".country, .date, .forecast-day").css("color", "#606060");
     $(".label-language, .label-darkmode").css("color", "#a2b0c1");
+    $(".label-text-darkmode").text("light");
 
     // Change icon forcast
     iconDarkMode = [];
@@ -376,6 +377,7 @@ function whiteMode() {
     $(".location, .temp").css("color", "#505050");
     $(".country, .date, .forecast-day").css("color", "#a2b0c1");
     $(".label-language, .label-darkmode").css("color", "#505050");
+    $(".label-text-darkmode").text("dark");
 
     // Change icon forcast
     iconWhiteMode = [];
