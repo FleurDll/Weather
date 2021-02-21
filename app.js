@@ -40,8 +40,6 @@ app.get("/", (req, res) => {
 
 app.post("/", (req, res) => {
 
-    console.log(req.body);
-
     const city = new City({
         cityName: req.body.city.cityName
     });

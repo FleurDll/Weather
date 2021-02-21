@@ -92,7 +92,7 @@ function getNext4Days(offset) {
         const today = (day) => day == String(currentDate);
         const indexCurrentDay = weekday.findIndex(today);
         // Get next days index
-        for (i = 1; i <= 4; i++) {
+        for (var i = 1; i <= 4; i++) {
             const newIndex = (indexCurrentDay + i) % 7;
             indexFutur.push(newIndex);
             $(".d" + i).text(weekday[indexFutur[i - 1]]);
@@ -119,6 +119,7 @@ const successLocationCurrent = function (data) {
 
 /////////////////////////////////////////////////////////////// Location forecast weather
 const successLocationForecast = function (data) {
+    console.log(data);
     const locationCity = (data.city.name).toUpperCase();
     const locationCountry = data.city.country;
     const locationFlag = "https://purecatamphetamine.github.io/country-flag-icons/3x2/" + locationCountry + ".svg";
@@ -140,7 +141,7 @@ const successLocationForecast = function (data) {
 
     handleForecastInfo(locationUTC, locationData);
 
-    for (i = 1; i <= 4; i++) {
+    for (var i = 1; i <= 4; i++) {
         $(".d" + i + "-temp").text(tempsDays[i - 1] + "°");
         $(".d" + i + "-img").attr("src", iconDays[i - 1]);
     }
@@ -245,11 +246,7 @@ const successSubmitForecast = function (data) {
 
     handleForecastInfo(submitUTC, submitData);
 
-    console.log(tempsDays);
-    console.log(iconCode);
-    console.log(submitUTC);
-
-    for (i = 1; i <= 4; i++) {
+    for (var i = 1; i <= 4; i++) {
         $(".d" + i + "-temp").text(tempsDays[i - 1] + "°");
         $(".d" + i + "-img").attr("src", iconDays[i - 1]);
     }
@@ -259,8 +256,6 @@ const successSubmitForecast = function (data) {
 $("form").submit(e => {
     const inputVal = $("#inputCity").val();
     const cityCapitalized = inputVal.charAt(0).toUpperCase() + inputVal.slice(1);
-
-
 
     setTimeout(() => { //clear input value
         $("#inputCity").val("");
@@ -275,14 +270,14 @@ $("form").submit(e => {
     $.get(urlCurrentCityName, successSubmitCurrent).done(function () {
     })
         .fail(function () {
-            window.location.replace("https://howstheweatherapp.herokuapp.com/error");
+            window.location.replace("error");
         })
 
     // Get forecast info
     $.get(urlForecastCityName, successSubmitForecast).done(function () {
     })
         .fail(function () {
-            window.location.replace("https://howstheweatherapp.herokuapp.com/error");
+            window.location.replace("error");
         })
     e.preventDefault();
 });
@@ -387,7 +382,7 @@ function darkMode() {
 
     // Change icon forcast
     iconDarkMode = [];
-    for (i = 0; i <= 3; i++) {
+    for (var i = 0; i <= 3; i++) {
         iconDarkMode.push("images/darkmodeIcon/" + iconCode[i] + ".svg");
         $(".d" + (i + 1) + "-img").attr("src", iconDarkMode[i]);
     }
@@ -409,7 +404,7 @@ function whiteMode() {
 
     // Change icon forcast
     iconWhiteMode = [];
-    for (i = 0; i <= 4; i++) {
+    for (var i = 0; i <= 4; i++) {
         iconWhiteMode.push("images/iconFutur/" + iconCode[i] + ".svg");
         $(".d" + (i + 1) + "-img").attr("src", iconWhiteMode[i]);
     }
