@@ -119,7 +119,6 @@ const successLocationCurrent = function (data) {
 
 /////////////////////////////////////////////////////////////// Location forecast weather
 const successLocationForecast = function (data) {
-    console.log(data);
     const locationCity = (data.city.name).toUpperCase();
     const locationCountry = data.city.country;
     const locationFlag = "https://purecatamphetamine.github.io/country-flag-icons/3x2/" + locationCountry + ".svg";
