@@ -2,7 +2,7 @@
 
 _13/02/21_
 
-## https://howstheweatherapp.herokuapp.com/
+## https://hows-the-weather-app.onrender.com/
 
 This fullstack web app gives current and forecast weather info with several functionalities :
 
@@ -65,4 +65,4 @@ Reduce image load time. They are already compressed, which improved the problem 
 All 3 meteo icons packages come from [Flaticon](https://www.flaticon.com/). <br>
 Photos from [Freepik](https://www.freepik.com) and [Pexels](https://www.pexels.com/fr-fr/).
 
-## ©2021, Fleur Dalle
+## ©2023, Fleur Dalle
